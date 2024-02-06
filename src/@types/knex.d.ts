@@ -1,5 +1,6 @@
 // eslint-disable-next-line
 import { Knex } from 'knex';
+import { randomUUID } from 'crypto'
 
 declare module 'knex/types/tables' {
   interface Tables {
@@ -14,7 +15,7 @@ declare module 'knex/types/tables' {
       id: string
       title: string
       content: string
-      user: string
+      user: randomUUID
     }
   }
 }
