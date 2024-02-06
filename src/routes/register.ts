@@ -31,7 +31,7 @@ export async function registerRoutes(app: FastifyInstance) {
 
     const register = await knex('register')
       .insert({
-        id: crypto.randomUUID(),
+        id: randomUUID(),
         name,
         email,
         password,

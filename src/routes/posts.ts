@@ -1,6 +1,7 @@
 import { FastifyInstance, FastifyRequest } from 'fastify'
 import { z } from 'zod'
 import { knex } from '../database'
+import { randomUUID } from 'crypto'
 
 export async function postsRoute(app: FastifyInstance) {
   app.get('/', async () => {
@@ -13,7 +14,7 @@ export async function postsRoute(app: FastifyInstance) {
     const createPostsSchema = z.object({
       title: z.string(),
       content: z.string(),
-      user: z.string(),
+      user: z.string().uuid(),
     })
 
     const { title, content, user } = createPostsSchema.parse(request.body)
